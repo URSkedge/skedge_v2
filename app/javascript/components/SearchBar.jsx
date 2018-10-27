@@ -7,9 +7,20 @@ class SearchBar extends Component {
 
     this.state = {};
   }
+  
+  componentDidMount() {
+    this.queryCourses();
+  }
 
   queryCourses(query) {
-    
+    const url = `http://localhost:3000/api/search?q=${query}`
+    fetch(url, {
+      method: 'GET',
+    })
+    .then(res => res.json())
+    .then((data) => {
+      console.log(data); 
+    })
   }
 
   render() {
