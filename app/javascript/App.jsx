@@ -8,7 +8,7 @@ import routes from './routes/routes';
 
 import SearchBar from './components/SearchBar';
 import Calendar from './components/Calendar';
-import Course from './components/Course';
+import CourseList from './components/CourseList';
 
 class App extends Component {
   constructor(props) {
@@ -41,11 +41,13 @@ class App extends Component {
         return;
       }
       this.setState({ results: data.courseGroups[0] });
-      this.setState({ error: data.searchError }); 
+      this.setState({ error: data.searchError });
     })
   }
 
   render() {
+    let searchResult = this.state.error ? null : <CourseList courses={this.state.results} />;
+
     return (
       <div id="root">
         <div className="left">
@@ -56,19 +58,13 @@ class App extends Component {
           </div>
           <div id="query-results">
             <span>{this.state.error}</span>
-            {this.state.results.map(course => (
-              <Course
-                key={course.id}
-                code={course.dept}
-                name={course.title}
-              />
-            ))}
+            { searchResult }
           </div>
           <Router>
             { routes }
           </Router>
         </div>
-  
+
         <div className="right">
           <Calendar />
         </div>

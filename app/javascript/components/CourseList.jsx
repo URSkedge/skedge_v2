@@ -13,7 +13,12 @@ class CourseList extends Component {
   render() {
     return (
       <div id="course-list">
-        {/* Map courses here */}
+        {this.props.courses.map(course => (
+          <Course
+            key={course.id}
+            course={course}
+          />
+        ))}
       </div>
     );
   }

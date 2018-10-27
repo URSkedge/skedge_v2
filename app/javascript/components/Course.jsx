@@ -9,10 +9,13 @@ class Course extends Component {
   }
 
   render() {
+    let course = this.props.course;
+
+
     return (
       <div className="course">
-        <span>{this.props.code}</span><br />
-        <span>{this.props.name}</span><br />
+        <span>{course.dept} {course.num}: {course.title}</span>
+        <div>{course.description}</div>
       </div>
     );
   }
@@ -20,8 +23,7 @@ class Course extends Component {
 
 // Props validation
 Course.propTypes = {
-  code: propTypes.string.isRequired,
-  name: propTypes.string.isRequired,
+  course: propTypes.object.isRequired
 };
 
 export default Course;
