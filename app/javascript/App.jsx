@@ -56,7 +56,7 @@ class App extends Component {
         <div className="col-wrap col-sm-8">
           <div className="header">
             <span className="homeLabel">Skedge V2</span>
-            <input onChange={this.updateQueryValue} value={this.state.query} id="search__input" />
+            <input onChange={this.updateQueryValue} placeholder="Search..." value={this.state.query} id="search__input" />
           </div>
           <div id="query-results">
             <span id="error">{this.state.error || <span id="term-header">Spring 2019</span>}</span>
