@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addCourse } from '../actions/addCourse';
+import { removeCourse } from '../actions/removeCourse';
 import propTypes from 'prop-types';
 
 class Section extends Component {
@@ -6,6 +9,15 @@ class Section extends Component {
     super(props);
 
     this.state = {};
+
+    this.addCourse = this.addCourse.bind(this);
+  }
+
+  addCourse() {
+    console.log(this.props.section);
+    
+    let term = this.props.section.course.yrTerm;
+    // this.props.addCourse({ term,  });
   }
 
   render() {
@@ -13,6 +25,7 @@ class Section extends Component {
 
     return (
       <div className="section">
+        <button onClick={this.addCourse}>Add</button>
         <div>Time & Place: {section.timeAndPlace}</div>
 
         <div>
@@ -37,4 +50,8 @@ Section.propTypes = {
   section: propTypes.object.isRequired
 };
 
-export default Section;
+const mapStateToProps = state => ({
+  state
+})
+
+export default connect(mapStateToProps, { addCourse, removeCourse })(Section);

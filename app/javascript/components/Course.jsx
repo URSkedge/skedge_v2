@@ -44,7 +44,7 @@ class Course extends Component {
         <span className="course__credit">{course.credits} credits</span>
         <div className="course__title">{course.dept} {course.num}: {course.title}</div>
         <div className="course__prereq">
-          Prerequisites: {course.prerequisites}
+          Prerequisites: {course.prerequisites || 'None'}
         </div>
         <div>{course.description}</div>
         { sectionElement }
