@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import propTypes from 'prop-types';
+
+import { store } from '../store';
 
 class Calendar extends Component {
   constructor(props) {
@@ -8,12 +11,29 @@ class Calendar extends Component {
     this.state = {
       credits: 0,
       sections: 0,
-      courses: Array,
     };
+
+    this.data = {};
   }
 
-  calculateOffset() {
+  componentDidMount() {
+    let me = this;    
+    let store1 = store;
+    store.subscribe(function() {
+      me.data = {};
+      me.data = store1.getState();
+      me.drawCourses();
+    });
+  }
 
+  drawCourses() {
+    let courses = this.data[this.data.term];
+    this.setState({ credits: 0 });
+    this.setState({ sections: 0 });
+    courses.forEach(section => {
+      this.setState({ sections: ++this.state.sections });
+      this.setState({ credits:  this.state.credits + parseInt(section.course.credits) });
+    });
   }
 
   render() {
@@ -41,11 +61,15 @@ class Calendar extends Component {
           3<div className="cal-block"></div>
           4<div className="cal-block"></div>
         </div>
-
         <span><b>{this.state.sections}</b> sections </span>/
         <span><b> {this.state.credits}</b> credits</span>
       </div>
     );
   }
 }
-export default Calendar;
+
+const mapStateToProps = state => ({
+  state,
+})
+
+export default connect(mapStateToProps, {})(Calendar);

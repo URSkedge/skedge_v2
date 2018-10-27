@@ -15,6 +15,7 @@ export const updateState = (state = {}, action) => {
       return state;
     case CHANGE_TERM:
       state.term = action.payload;
+      return state;
     default:
       return state;
   }

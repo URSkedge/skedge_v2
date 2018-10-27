@@ -30,14 +30,12 @@ class Section extends Component {
   addCourse() {
     let term = this.props.section.course.yrTerm;
     this.props.addCourse({ term, course: this.props.section });
-    console.log(this.props.state);
     this.setState({ remove: true });
   }
 
   removeCourse() {
     let term = this.props.section.course.yrTerm;
     this.props.removeCourse({ term, course: this.props.section.course });
-    console.log(this.props.state);
     this.setState({ remove: false });
   }
 
