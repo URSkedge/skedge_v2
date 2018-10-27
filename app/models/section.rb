@@ -14,7 +14,7 @@ class Section < ApplicationRecord
     Workshop = 4
   end
 
-  include Decoratable
+  # include Decoratable
 
   belongs_to :course
 
