@@ -44,17 +44,17 @@ class Section extends Component {
   render() {
     let section = this.props.section;
     let button = !this.state.remove ?
-      <button id="add-course" onClick={this.addCourse}>Add Section</button> :
-      <button id="remove-course" onClick={this.removeCourse}>Remove Section</button>;
+      <button className="btn btn-outline-primary" onClick={this.addCourse}>Add Section</button> :
+      <button className="btn btn-outline-danger" onClick={this.removeCourse}>Remove Section</button>;
     return (
       <div className="section">
-        <div id="section-button">{button}</div>
-        <div id="section-info">
+        <div id="section__addBtn">{button}</div>
+        <div className="section__info">
           <div><b>Time & Place:</b> {section.timeAndPlace}</div>
 
           <div>
             <span><b>Instructor:</b> {section.instructors}</span>
-            <span><b> CRN:</b> {section.crn}</span>
+            <span className="section__crn"><b>CRN:</b> {section.crn}</span>
           </div>
 
           <div>

@@ -47,17 +47,19 @@ class SubCourseSection extends Component {
   render() {
     let section = this.props.section;
     let button = !this.state.remove ?
-      <button id="add-course" onClick={this.addCourse}>Add</button> :
-      <button id="remove-course" onClick={this.removeCourse}>Remove</button>;
+      <button className="btn btn-outline-primary btn-sm btn-block" onClick={this.addCourse}>Add</button> :
+      <button className="btn btn-outline-danger btn-sm btn-block" onClick={this.removeCourse}>Remove</button>;
     return (
       <div className="col-sm-6">
         <div className="row">
-          <div className="col-sm-2">{button}</div>
-          <div className="col-sm-8">
+          <div className="col-sm-2" style={{paddingRight: '0px'}}>{button}</div>
+          <div className="col-sm-10">
             <div>{section.timeAndPlace}</div>
             <div>
               <span>{section.enrollRatio} enrolled</span>
-              <span> CRN: {section.crn}</span>
+              <span className="subCourseSection__crn">
+                <b>CRN:</b> {section.crn}
+              </span>
             </div>
           </div>
         </div>

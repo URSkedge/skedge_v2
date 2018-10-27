@@ -4,30 +4,15 @@
   flex-direction: row;
 }
 
-#section-info {
+.section__info {
   margin: 0 16px;
 }
 
-#section-button {
+.section__addBtn {
   display: flex;
   align-items: center;
 }
 
-#add-course, #remove-course {
-  border: none;
-  border-radius: 4px;
-  color: white;
-  font-size: .9em;
-  padding: 4px 10px;
-  font-weight: bold;
+.section__crn {
+  padding-left: 18px;
 }
-
-#add-course {
-  background: rgb(75, 75, 224);
-}
-
-#remove-course {
-  background: red;
-}
-
-
