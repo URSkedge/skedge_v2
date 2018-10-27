@@ -14,8 +14,6 @@ class Section < ApplicationRecord
     Workshop = 4
   end
 
-  # include Decoratable
-
   belongs_to :course
 
   validates :crn, presence: true, uniqueness: true
