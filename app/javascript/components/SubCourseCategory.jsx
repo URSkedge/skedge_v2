@@ -1,7 +1,9 @@
+// This can be all the lab sections of a course, or
+// all the recitations of a course, and etc.
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 
-class SubCourseGroup extends Component {
+class SubCourseCategory extends Component {
   constructor(props) {
     super(props);
 
@@ -31,4 +33,4 @@ class SubCourseGroup extends Component {
     );
   }
 }
-export default SubCourseGroup;
+export default SubCourseCategory;

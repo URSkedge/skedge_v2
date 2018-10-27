@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-import SubCourseGroup from '../components/SubCourseGroup';
+import SubCourseCategory from '../components/SubCourseCategory';
 import Section from '../components/Section';
 
 class Course extends Component {
@@ -34,7 +34,7 @@ class Course extends Component {
     for (let title in subcourses) {
       if (subcourses[title] && Object.values(subcourses[title]).length > 0) {
         subElements.push(
-          <SubCourseGroup key={title} title={title} sectionGroups={subcourses[title]} />
+          <SubCourseCategory key={title} title={title} sectionGroups={subcourses[title]} />
         )
       }
     }
