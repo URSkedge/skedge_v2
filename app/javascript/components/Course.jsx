@@ -25,7 +25,11 @@ class Course extends Component {
 
     return (
       <div className="course">
-        <span>{course.dept} {course.num}: {course.title}</span>
+        <span className="course__credit">{course.credits} credits</span>
+        <div className="course__title">{course.dept} {course.num}: {course.title}</div>
+        <div className="course__prereq">
+          Prerequisites: {course.prerequisites}
+        </div>
         <div>{course.description}</div>
         { sections }
       </div>
