@@ -23,7 +23,7 @@ class SubCourseCategory extends Component {
       // Such a group can be 'Lab A', 'Lab B', or simply 'Lab'
       sectionGroupElements.push(
         <div key={`${this.props.title}_${sectionGroupLabel}`} className="subCourseSectionGroup">
-          <div>{this.props.title} {sectionGroupLabel}</div>
+          <div className="subCourseCategory__title">{this.props.title} {sectionGroupLabel}</div>
           <div className="row">
             {sectionElements}
           </div>
