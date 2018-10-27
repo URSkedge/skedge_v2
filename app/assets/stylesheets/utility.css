@@ -1,0 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  color: #5C5C5C;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#root {
+  display: flex;
+  flex-direction: row;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.left, .right {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 16px;
+  height: 100vh;
+}
+
+.left {
+  flex-grow: 10;
+}
+
+.right {
+  flex-grow: 6;
+}
