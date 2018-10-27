@@ -11,6 +11,7 @@ class Calendar extends Component {
     this.state = {
       credits: 0,
       sections: 0,
+      blockArray: []
     };
 
     this.data = {};
@@ -33,7 +34,15 @@ class Calendar extends Component {
     courses.forEach(section => {
       this.setState({ sections: ++this.state.sections });
       this.setState({ credits:  this.state.credits + parseInt(section.course.credits) });
+      console.log(section);
+      
+      let block = {width: '64px', height: section.duration * 100, xOffset: '20px', yOffset: (section.startTime % 1000)};
+      let newList = this.state.blockArray;
+      newList.push(block);
+      this.setState({ blockArray: newList });
     });
+
+    console.log(this.state.blockArray);
   }
 
   render() {
@@ -53,13 +62,17 @@ class Calendar extends Component {
         </table>
 
         <div id="cal-content">
-          10<div className="cal-block"></div>
-          11<div className="cal-block"></div>
-          12<div className="cal-block"></div>
-          1<div className="cal-block"></div>
-          2<div className="cal-block"></div>
-          3<div className="cal-block"></div>
-          4<div className="cal-block"></div>
+          <div className="class-block">
+            MTH 165<br />
+            TH 6-10
+          </div>
+          10<div className="time-block"></div>
+          11<div className="time-block"></div>
+          12<div className="time-block"></div>
+          1<div className="time-block"></div>
+          2<div className="time-block"></div>
+          3<div className="time-block"></div>
+          4<div className="time-block"></div>
         </div>
         <span><b>{this.state.sections}</b> sections </span>/
         <span><b> {this.state.credits}</b> credits</span>

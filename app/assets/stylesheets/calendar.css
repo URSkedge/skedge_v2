@@ -6,6 +6,7 @@
 table {
   width: 100%;
   padding: 4px;
+  text-align: center;
 }
 
 tbody {
@@ -28,10 +29,26 @@ tr {
   margin: 16px 0;
 }
 
-.cal-block {
+.time-block {
   width: 100%;
   height: 12%;
   border-top: 1px solid rgba(92, 92, 92, 0.5);
   border-radius: 1px;
+}
+
+.class-block {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  color: white;
+  text-align: center;
+  font-size: .5em;
+  justify-content: center;
+  margin: 0 0 0 20px;
+  width: 64px;
+  height: 100px;
+  background: slateblue;
+  border-radius: 6px;
+  z-index: 5;
 }
 
