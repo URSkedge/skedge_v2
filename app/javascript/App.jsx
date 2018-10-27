@@ -59,12 +59,12 @@ class App extends Component {
     let searchResult = this.state.error ? null : <CourseList courses={this.state.results} />;
 
     return (
-      <div id="root">
-        <div className="left">
+      <div className="row">
+        <div className="col-sm-8">
           <div className="header">
-            <h1>skedge v2</h1>
+            <span className="homeLabel">Skedge V2</span>
             {/* <SearchBar /> */}
-            <input onChange={this.updateQueryValue} value={this.state.query} id="search-input" />
+            <input onChange={this.updateQueryValue} value={this.state.query} id="search__input" />
           </div>
           <div id="query-results">
             <span>{this.state.error}</span>
@@ -75,7 +75,7 @@ class App extends Component {
           </Router>
         </div>
 
-        <div className="right">
+        <div className="col-sm-4">
           <Calendar />
         </div>
       </div>

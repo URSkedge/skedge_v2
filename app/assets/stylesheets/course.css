@@ -1,7 +1,7 @@
 .course {
-  margin: 8px 0;
+  margin: 10px 0;
   padding: 4px;
-  border: 1px solid grey;
+  border-bottom: 1px solid #cccccc;
 }
 
 .course__credit {
@@ -16,4 +16,5 @@
 .course__prereq {
   margin-bottom: 5px;
 }
+
 
