@@ -5,11 +5,17 @@ class SearchBar extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      results: [],
+      error: '',
+    };
+    this.updateQueryValue = this.updateQueryValue.bind(this);
   }
-  
-  componentDidMount() {
-    this.queryCourses();
+
+  updateQueryValue(evt) {
+    console.log(evt);
+    
+    this.queryCourses(evt.target.value);
   }
 
   queryCourses(query) {
@@ -19,14 +25,15 @@ class SearchBar extends Component {
     })
     .then(res => res.json())
     .then((data) => {
-      console.log(data); 
+      this.setState({ results: data.courseGroups });
+      this.setState({ error: data.searchError }); 
     })
   }
 
   render() {
     return (
       <div id="search-bar">
-        <input id="search-input" placeholder="query" />
+        <input onChange={this.updateQueryValue} id="search-input" placeholder="query" />
       </div>
     );
   }

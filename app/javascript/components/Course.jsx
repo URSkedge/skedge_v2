@@ -10,8 +10,9 @@ class Course extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Course</h1>
+      <div className="course">
+        <span>{this.props.code}</span><br />
+        <span>{this.props.name}</span><br />
       </div>
     );
   }
@@ -21,9 +22,6 @@ class Course extends Component {
 Course.propTypes = {
   code: propTypes.string.isRequired,
   name: propTypes.string.isRequired,
-  time: propTypes.string.isRequired,
-  professor: propTypes.string.isRequired,
-  location: propTypes.string.isRequired,
 };
 
 export default Course;
