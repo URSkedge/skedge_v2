@@ -9,6 +9,11 @@ class SubCourseCategory extends Component {
     super(props);
 
     this.state = {};
+    this.toggleSectionGroup = this.toggleSectionGroup.bind(this);
+  }
+
+  toggleSectionGroup(evt) {
+    evt.target.nextSibling.classList.toggle('hidden');
   }
 
   render() {
@@ -23,8 +28,10 @@ class SubCourseCategory extends Component {
       // Such a group can be 'Lab A', 'Lab B', or simply 'Lab'
       sectionGroupElements.push(
         <div key={`${this.props.title}_${sectionGroupLabel}`} className="subCourseSectionGroup">
-          <div className="subCourseCategory__title">{this.props.title} {sectionGroupLabel}</div>
-          <div className="row">
+          <div className="subCourseCategory__title" onClick={this.toggleSectionGroup}>
+            {this.props.title} {sectionGroupLabel} ({sectionElements.length} sections)
+          </div>
+          <div className="row hidden">
             {sectionElements}
           </div>
         </div>

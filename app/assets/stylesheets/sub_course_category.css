@@ -1,5 +1,5 @@
 .subCourseCategory {
-  margin: 15px;
+  margin: 10px, 15px;
 }
 
 .subCourseSectionGroup {
@@ -7,6 +7,7 @@
 }
 
 .subCourseCategory__title {
-  font-size: 1.2em;
   margin-bottom: 5px;
+  cursor: pointer;
+  color: #007bff;
 }

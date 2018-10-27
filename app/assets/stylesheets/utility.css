@@ -17,6 +17,10 @@ html, body {
   margin-bottom: 20px;
 }
 
+.hidden {
+  display: none !important;
+}
+
 /*
 #root {
   display: flex;
