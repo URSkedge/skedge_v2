@@ -52,3 +52,9 @@ tr {
   z-index: 5;
 }
 
+@media only screen and (max-width: 700px) {
+  #calendar-wrap, #cal-content {
+    display: none;
+  }
+}
+

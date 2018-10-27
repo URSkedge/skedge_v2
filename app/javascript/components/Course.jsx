@@ -27,7 +27,7 @@ class Course extends Component {
       "Labs": course.subcourses.lab,
       "Workshops": course.subcourses.workshop,
       "Recitations": course.subcourses.recitation,
-      "Lab Lactures": course.subcourses.labLecture
+      "Lab Lectures": course.subcourses.labLecture
     };
 
     let subElements = [];
@@ -42,9 +42,12 @@ class Course extends Component {
     return (
       <div className="course">
         <span className="course__credit">{course.credits} credits</span>
-        <div className="course__title">{course.dept} {course.num}: {course.title}</div>
+        <div className="course__title">{course.dept} <b>{course.num}</b>: {course.title}</div>
         <div className="course__prereq">
-          Prerequisites: {course.prerequisites || 'None'}
+          <b>Comments:</b> {course.comments || 'None'}
+        </div>
+        <div className="course__prereq">
+          <b>Prerequisites:</b> {course.prerequisites || 'None'}
         </div>
         <div>{course.description}</div>
         { sectionElement }

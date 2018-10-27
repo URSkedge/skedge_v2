@@ -2,11 +2,7 @@
  * Root Component
  */
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 
-import routes from './routes/routes';
-
-import SearchBar from './components/SearchBar';
 import Calendar from './components/Calendar';
 import CourseList from './components/CourseList';
 
@@ -29,9 +25,6 @@ class App extends Component {
   }
 
   queryCourses(query) {
-    // if (query.length < 3){
-    //   return;
-    // }
     const url = `http://localhost:3000/api/search?q=${query}`
     fetch(url, {
       method: 'GET',
@@ -60,22 +53,18 @@ class App extends Component {
 
     return (
       <div className="row">
-        <div className="col-sm-8">
+        <div className="col-wrap col-sm-8">
           <div className="header">
             <span className="homeLabel">Skedge V2</span>
-            {/* <SearchBar /> */}
             <input onChange={this.updateQueryValue} value={this.state.query} id="search__input" />
           </div>
           <div id="query-results">
-            <span>{this.state.error}</span>
+            <span id="error">{this.state.error || <span id="term-header">Spring 2019</span>}</span>
             { searchResult }
           </div>
-          <Router>
-            { routes }
-          </Router>
         </div>
 
-        <div className="col-sm-4">
+        <div className="cal-wrap col-wrap col-sm-4">
           <Calendar />
         </div>
       </div>
