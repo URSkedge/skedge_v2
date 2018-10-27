@@ -2,6 +2,7 @@
 // all the recitations of a course, and etc.
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
+import SubCourseSection from '../components/SubCourseSection';
 
 class SubCourseCategory extends Component {
   constructor(props) {
@@ -13,22 +14,26 @@ class SubCourseCategory extends Component {
   render() {
     let sectionGroupElements = [];
     let sectionGroups = this.props.sectionGroups
-    for (let groupTitle in sectionGroups) {
-      let sectionElements = sectionGroups[groupTitle].map((section) => {
-        return (<span>{section.crn} || </span>)
+    for (let sectionGroupLabel in sectionGroups) {
+      let sectionElements = sectionGroups[sectionGroupLabel].map((section) => {
+        return <SubCourseSection key={section.crn} section={section} />
       });
+
+      // This pushes a group of sub course sections in each iteration.
+      // Such a group can be 'Lab A', 'Lab B', or simply 'Lab'
       sectionGroupElements.push(
-        <div>
-          <p>{groupTitle}</p>
-          {sectionElements}
+        <div key={`${this.props.title}_${sectionGroupLabel}`} className="subCourseSectionGroup">
+          <div>{this.props.title} {sectionGroupLabel}</div>
+          <div class="row">
+            {sectionElements}
+          </div>
         </div>
       );
     }
 
     return (
-      <div>
-        <div>{this.props.title}</div>
-        {sectionGroupElements}
+      <div className="subCourseCategory">
+        {sectionGroupElements.reverse()}
       </div>
     );
   }
