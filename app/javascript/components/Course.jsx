@@ -13,14 +13,30 @@ class Course extends Component {
   render() {
     let course = this.props.course;
 
-    let sections;
+    let sectionElement;
     if (course.sections) {
-      sections = course.sections.map(section => (
+      sectionElement = course.sections.map(section => (
         <Section
           key={section.id}
           section={section}
         />
       ));
+    }
+
+    let subcourses = {
+      "Labs": course.subcourses.lab,
+      "Workshops": course.subcourses.workshop,
+      "Recitations": course.subcourses.recitation,
+      "Lab Lactures": course.subcourses.labLecture
+    };
+
+    let subElements = [];
+    for (let title in subcourses) {
+      if (subcourses[title] && Object.values(subcourses[title]).length > 0) {
+        subElements.push(
+          <SubCourseGroup key={title} title={title} sectionGroups={subcourses[title]} />
+        )
+      }
     }
 
     return (
@@ -31,7 +47,8 @@ class Course extends Component {
           Prerequisites: {course.prerequisites}
         </div>
         <div>{course.description}</div>
-        { sections }
+        { sectionElement }
+        { subElements }
       </div>
     );
   }
