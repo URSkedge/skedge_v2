@@ -8,24 +8,47 @@ class Section extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      remove: false,
+    };
 
     this.addCourse = this.addCourse.bind(this);
+    this.removeCourse = this.removeCourse.bind(this);
+  }
+
+  componentDidMount() {
+    let term = this.props.section.course.yrTerm;
+    if (this.props.state[term]) {
+      this.props.state[term].forEach((section) => {
+        if (section.crn == this.props.section.crn) {
+          this.setState({ remove: true });
+        }
+      });
+    }
   }
 
   addCourse() {
-    console.log(this.props.section);
-    
     let term = this.props.section.course.yrTerm;
-    // this.props.addCourse({ term,  });
+    this.props.addCourse({ term, course: this.props.section });
+    console.log(this.props.state);
+    this.setState({ remove: true });
+  }
+
+  removeCourse() {
+    let term = this.props.section.course.yrTerm;
+    this.props.removeCourse({ term, course: this.props.section.course });
+    console.log(this.props.state);
+    this.setState({ remove: false });
   }
 
   render() {
     let section = this.props.section;
-
+    let button = !this.state.remove ?
+      <button id="add-course" onClick={this.addCourse}>Add</button> :
+      <button id="remove-course" onClick={this.removeCourse}>Remove</button>;
     return (
       <div className="section">
-        <button onClick={this.addCourse}>Add</button>
+        {button}
         <div>Time & Place: {section.timeAndPlace}</div>
 
         <div>
