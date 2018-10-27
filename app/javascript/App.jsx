@@ -15,6 +15,7 @@ class App extends Component {
     super(props);
 
     this.state = {
+      query: '',
       results: [],
       error: '',
     };
@@ -22,7 +23,9 @@ class App extends Component {
   }
 
   updateQueryValue(evt) {
-    this.queryCourses(evt.target.value);
+    const newVal = evt.target.value;
+    this.setState({query: newVal});
+    this.queryCourses(newVal);
   }
 
   queryCourses(query) {
@@ -45,6 +48,13 @@ class App extends Component {
     })
   }
 
+  componentDidMount() {
+    if (gon.last_query) {
+      this.setState({query: gon.last_query});
+      this.queryCourses(gon.last_query);
+    }
+  }
+
   render() {
     let searchResult = this.state.error ? null : <CourseList courses={this.state.results} />;
 
@@ -54,7 +64,7 @@ class App extends Component {
           <div className="header">
             <h1>skedge v2</h1>
             {/* <SearchBar /> */}
-            <input onChange={this.updateQueryValue} id="search-input" placeholder="query" />
+            <input onChange={this.updateQueryValue} value={this.state.query} id="search-input" />
           </div>
           <div id="query-results">
             <span>{this.state.error}</span>

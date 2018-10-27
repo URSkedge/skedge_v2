@@ -3,7 +3,7 @@ module Api
 
     def index
       query = params[:q].strip.downcase
-
+      cookies[:last_query] = query
       # case @query.downcase
       # when ""
       #   redirect_to :root
