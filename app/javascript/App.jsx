@@ -3,6 +3,9 @@
  */
 import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+import { addCourse } from './actions/addCourse';
 
 import routes from './routes/routes';
 
@@ -49,6 +52,8 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.props.addCourse({term: '20191', course: {code: 'CSC171'}});
+    console.log(this.props.state);
     if (gon.last_query) {
       this.setState({query: gon.last_query});
       this.queryCourses(gon.last_query);
@@ -83,4 +88,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  state
+})
+
+export default connect(mapStateToProps, { addCourse })(App);

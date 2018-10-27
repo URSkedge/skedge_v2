@@ -5,12 +5,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import { updateState } from '../reducers/updateState';
+
 import App from '../App';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
+  const store = createStore(updateState);
   ReactDOM.render(
-    <App />,
+    <Provider store={store}>
+      <App />
+    </Provider>,
     root.appendChild(document.createElement('div')),
   )
 })
