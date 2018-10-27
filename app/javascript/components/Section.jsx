@@ -44,22 +44,24 @@ class Section extends Component {
   render() {
     let section = this.props.section;
     let button = !this.state.remove ?
-      <button id="add-course" onClick={this.addCourse}>Add</button> :
-      <button id="remove-course" onClick={this.removeCourse}>Remove</button>;
+      <button id="add-course" onClick={this.addCourse}>Add Section</button> :
+      <button id="remove-course" onClick={this.removeCourse}>Remove Section</button>;
     return (
       <div className="section">
-        {button}
-        <div>Time & Place: {section.timeAndPlace}</div>
+        <div id="section-button">{button}</div>
+        <div id="section-info">
+          <div><b>Time & Place:</b> {section.timeAndPlace}</div>
 
-        <div>
-          <span>Instructor: {section.instructors}</span>
-          <span>CRN: {section.crn}</span>
-        </div>
+          <div>
+            <span><b>Instructor:</b> {section.instructors}</span>
+            <span><b> CRN:</b> {section.crn}</span>
+          </div>
 
-        <div>
-          <div className="progress">
-            <div className="progress-bar bg-info" role="progressbar" style={{width: section.enrollBarPercentage + '%'}}>
-              {section.enrollRatio}
+          <div>
+            <div className="progress">
+              <div className="progress-bar bg-info" role="progressbar" style={{width: section.enrollBarPercentage + '%'}}>
+                {section.enrollRatio}
+              </div>
             </div>
           </div>
         </div>
