@@ -22,8 +22,9 @@ class Section extends Component {
 
         <div>
           <div className="progress">
-            <div className="progress-bar bg-info" role="progressbar" style={{width: section.enrollBarPercentage + '%'}}></div>
-            {section.enrollRatio + ' enrolled'}
+            <div className="progress-bar bg-info" role="progressbar" style={{width: section.enrollBarPercentage + '%'}}>
+              {section.enrollRatio + ' enrolled'}
+            </div>
           </div>
         </div>
       </div>
