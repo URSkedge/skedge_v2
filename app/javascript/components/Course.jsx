@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-
+import SubCourseGroup from '../components/SubCourseGroup';
 import Section from '../components/Section';
 
 class Course extends Component {
