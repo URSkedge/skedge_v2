@@ -48,6 +48,7 @@ class Calendar extends Component {
   }
 
   updateEvents() {
+    $("#calendar").fullCalendar('removeEvents');
     let sections = this.data[this.data.term];
     let totalCredit = 0;
     sections.forEach(section => { totalCredit += parseInt(section.course.credits) });
@@ -71,7 +72,7 @@ class Calendar extends Component {
   render() {
     return (
       <div id="calendar-wrap">
-        <span><b>{this.state.sectionCnt}</b> sectionCnt </span>/
+        <span><b>{this.state.sectionCnt}</b> sections </span>/
         <span><b> {this.state.credits}</b> credits</span>
       </div>
     );
