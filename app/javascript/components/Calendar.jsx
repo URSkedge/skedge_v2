@@ -11,7 +11,7 @@ class Calendar extends Component {
 
     this.state = {
       credits: 0,
-      sections: 0,
+      sectionCnt: 0,
     };
 
     this.data = {};
@@ -48,14 +48,15 @@ class Calendar extends Component {
   }
 
   updateEvents() {
-    let courses = this.data[this.data.term];
-    this.setState({ sections: 0 });
-    console.log(courses);
-    
-    courses.forEach(section => {
+    let sections = this.data[this.data.term];
+    let totalCredit = 0;
+    sections.forEach(section => { totalCredit += parseInt(section.course.credits) });
+    this.setState({ sectionCnt: sections.length, credits: totalCredit });
+    console.log(sections.length);
+
+    sections.forEach(section => {
       let start = section.startTime.toString();
       let end = section.endTime.toString();
-      this.setState({ sections: ++this.state.sections });
       $("#calendar").fullCalendar('renderEvent', {
         id: section.crn,
         title: `${section.course.dept} ${section.course.num}`,
@@ -70,7 +71,7 @@ class Calendar extends Component {
   render() {
     return (
       <div id="calendar-wrap">
-        <span><b>{this.state.sections}</b> sections </span>/
+        <span><b>{this.state.sectionCnt}</b> sectionCnt </span>/
         <span><b> {this.state.credits}</b> credits</span>
       </div>
     );
