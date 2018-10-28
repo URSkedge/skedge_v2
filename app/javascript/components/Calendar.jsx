@@ -12,7 +12,6 @@ class Calendar extends Component {
     this.state = {
       credits: 0,
       sections: 0,
-      blockArray: []
     };
 
     this.data = {};
@@ -24,9 +23,12 @@ class Calendar extends Component {
     store.subscribe(function() {
       me.data = {};
       me.data = store1.getState();
-      me.updateStates();
+      me.updateEvents();
     });
+    this.drawCalendar();
+  }
 
+  drawCalendar() {
     $("#calendar").fullCalendar({
       defaultView: 'agendaDay',
       height: 600,
@@ -34,10 +36,7 @@ class Calendar extends Component {
       allDaySlot: false,
       scrollTime: '08:00:00',
       schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
-      events: [
-        {title: 'course 1', start: '12:00:00', end: '14:00:00', resourceIds: ['M', 'W'], backgroundColor: '#e6fffa'},
-        {title: 'course 2', start: '14:10:00', end: '16:00:00', resourceIds: ['T', 'R'], backgroundColor: '#e6fffa'}
-      ],
+      events: [],
       resources: [
         { id: 'M', title: 'Mon' },
         { id: 'T', title: 'Tu' },
@@ -48,40 +47,25 @@ class Calendar extends Component {
     });
   }
 
-  updateStates() {
+  updateEvents() {
     let courses = this.data[this.data.term];
-    this.setState({ credits: 0 });
     this.setState({ sections: 0 });
+    console.log(courses);
+    
     courses.forEach(section => {
+      let start = section.startTime.toString();
+      let end = section.endTime.toString();
       this.setState({ sections: ++this.state.sections });
-      this.setState({ credits:  this.state.credits + parseInt(section.course.credits) });
-      console.log(section);
-
-      let block = {width: '64px', height: section.duration * 100, xOffset: '20px', yOffset: (section.startTime % 1000)};
-      let newList = this.state.blockArray;
-      newList.push(block);
-      this.setState({ blockArray: newList });
+      $("#calendar").fullCalendar('renderEvent', {
+        id: section.crn,
+        title: `${section.course.dept} ${section.course.num}`,
+        start: `${start.substring(0,2)}:${start.substring(2)}:00`,
+        end: `${end.substring(0,2)}:${end.substring(2)}:00`,
+        resourceIds: section.days.split(''),
+        backgroundColor: '#e6fffa'
+      });
     });
   }
-
-
-  // drawCourses() {
-  //   let courses = this.data[this.data.term];
-  //   this.setState({ credits: 0 });
-  //   this.setState({ sections: 0 });
-  //   courses.forEach(section => {
-  //     this.setState({ sections: ++this.state.sections });
-  //     this.setState({ credits:  this.state.credits + parseInt(section.course.credits) });
-  //     console.log(section);
-
-  //     let block = {width: '64px', height: section.duration * 100, xOffset: '20px', yOffset: (section.startTime % 1000)};
-  //     let newList = this.state.blockArray;
-  //     newList.push(block);
-  //     this.setState({ blockArray: newList });
-  //   });
-
-  //   console.log(this.state.blockArray);
-  // }
 
   render() {
     return (
