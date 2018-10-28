@@ -30,20 +30,20 @@ class Section extends Component {
   addCourse() {
     let term = this.props.section.course.yrTerm;
     this.props.addCourse({ term, course: this.props.section });
-    this.setState({ remove: true });
+    this.setState({ remove: true });    
   }
 
   removeCourse() {
     let term = this.props.section.course.yrTerm;
-    this.props.removeCourse({ term, course: this.props.section.course });
+    this.props.removeCourse({ term, course: this.props.section });
     this.setState({ remove: false });
   }
 
   render() {
     let section = this.props.section;
-    let button = !this.state.remove ?
-      <button className="btn btn-outline-primary" onClick={this.addCourse}>Add Section</button> :
-      <button className="btn btn-outline-danger" onClick={this.removeCourse}>Remove Section</button>;
+    let button = this.state.remove ?
+      <button className="btn btn-outline-danger" onClick={this.removeCourse}>Remove Section</button> :
+      <button className="btn btn-outline-primary" onClick={this.addCourse}>Add Section</button>
     return (
       <div className="section">
         <div id="section__addBtn">{button}</div>
