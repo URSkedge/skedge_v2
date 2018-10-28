@@ -31,12 +31,11 @@ class Calendar extends Component {
   drawCalendar() {
     $("#calendar").fullCalendar({
       defaultView: 'agendaDay',
-      height: 670,
+      height: 630,
       header: false,
       allDaySlot: false,
       minTime: '08:00:00',
       maxTime: '21:00:00',
-      scrollTime: '08:00:00',
       schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
       events: [],
       resources: [
