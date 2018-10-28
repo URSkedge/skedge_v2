@@ -42,3 +42,11 @@ html, body {
   height: 100vh;
   padding: 8px;
 }
+
+td.fc-axis {
+  font-weight: 300;
+}
+.fc-widget-content {
+  background: white;
+}
+

@@ -64,7 +64,8 @@ class App extends Component {
           </div>
         </div>
 
-        <div className="cal-wrap col-wrap col-sm-4">
+        <div className="col-wrap col-sm-4">
+          <div id="calendar"></div>
           <Calendar />
         </div>
       </div>
