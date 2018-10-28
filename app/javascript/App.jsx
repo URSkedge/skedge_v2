@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   queryCourses(query) {
-    const url = `http://localhost:3000/api/search?q=${query}`
+    const url = `${gon.host_url}/api/search?q=${query}`
     fetch(url, {
       method: 'GET',
     })
