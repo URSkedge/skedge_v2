@@ -56,8 +56,8 @@ class Calendar extends Component {
     console.log(sections.length);
 
     sections.forEach(section => {
-      let start = section.startTime.toString();
-      let end = section.endTime.toString();
+      let start = section.startTime.toString().padStart(4, '0');
+      let end = section.endTime.toString().padStart(4, '0');
       $("#calendar").fullCalendar('renderEvent', {
         id: section.crn,
         title: `${section.course.dept} ${section.course.num}`,
