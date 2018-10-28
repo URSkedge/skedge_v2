@@ -1,4 +1,4 @@
-## Based on Dan Hassin's fabulous [Skedge](https://github.com/RocHack/skedge).
+## Based on [Dan Hassin (UR'16)](https://github.com/dingbat)'s fabulous [Skedge](https://github.com/RocHack/skedge).
 
 ## Motivation for V2
 * Skedge is no longer maintained :(
