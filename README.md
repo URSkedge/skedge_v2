@@ -18,10 +18,14 @@
 * Make Skedge V2 a learning resource for all students interested in Web.
 
 ## Check it out
-http://skedgev2.herokuapp.com/
+https://skedgev2.herokuapp.com/
 
 
 ## Setup
+`bundle install` to install Ruby gems
+
+`yarn` to install all npm packages
+
 `bundle exec rails s` to start server
 
 `bundle exec rails db:migrate` to resolve pending migration
