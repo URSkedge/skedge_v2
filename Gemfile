@@ -12,7 +12,7 @@ gem 'webpacker'
 gem 'jbuilder', '~> 2.5'
 
 
-gem 'devise', '4.4.3'
+gem 'devise', '4.7.1'
 gem 'haml'
 gem 'mechanize'
 gem 'draper'
